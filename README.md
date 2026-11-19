@@ -103,7 +103,7 @@ FinTrack/
 │   └── report_dialog.py
 ├── services/
 └── resources/
-    └── logo.png
+    └── logo.PNG
 ```
 
 ## 6. Установка и запуск из исходного кода
@@ -119,7 +119,7 @@ FinTrack/
 Клонировать репозиторий:
 
 ```bash
-git clone ССЫЛКА_НА_РЕПОЗИТОРИЙ
+git clone https://github.com/SinedNikral/FinTrack.git
 ```
 
 Перейти в папку проекта:
