@@ -1,0 +1,1525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>750</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>750</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>FinTrack - личные финансы</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#sidebar {
+background-color: #263B69;
+}
+
+QWidget#sidebar QPushButton {
+background: #3B5678;
+color: white;
+border: none;
+border-radius: 16px;
+padding: 12px 15px;
+text-align: left;
+font-size: 14px;
+}
+
+QWidget#sidebar QPushButton:hover {
+background-color: #4B6688;
+}
+
+QWidget#sidebar QPushButton#btnDashboard {
+background-color: #4B6688;
+font-weight: bold;
+}
+
+QWidget#contentArea {
+background-color: #F3F6FA;
+}
+
+QFrame#cardBalance {
+background-color: white;
+border: 1px solid #E2E8F0;
+border-radius: 10px;
+}
+
+QFrame#cardIncome {
+background-color: white;
+border: 1px solid #E2E8F0;
+border-radius: 10px;
+}
+
+QFrame#cardExpense {
+background-color: white;
+border: 1px solid #E2E8F0;
+border-radius: 10px;
+}
+
+QPushButton#btnAddTransaction {
+background-color: #2563EB;
+color: white;
+border: none;
+border-radius: 6px;
+padding: 10px 16px;
+font-size: 14px;
+font-weight: bold;
+}
+
+QPushButton#btnAddTransaction:hover {
+background-color: #1D4ED8;
+}
+
+QPushButton#btnResetFilters {
+background-color: #E2E8F0;
+color: #263B59;
+border: none;
+border-radius: 6px;
+padding: 8px 12px;
+}
+
+QPushButton#btnResetFilters:hover {
+background-color: #CBD5E1;
+}
+
+QTableView {
+background-color: white;
+alternate-background-color: #F8FAFC;
+color: #263B59;
+border: 1px solid #E2E8F0;
+border-radius: 6px;
+gridline-color: #E2E8F0;
+selection-background-color: #DBEAFE;
+selection-color: #263B59;
+}
+
+QTableView::item {
+padding: 8px;
+}
+
+QPushButton#btnAddNewTransaction {
+background-color: #2563E8;
+color: white;
+border: none;
+border-radius: 6px;
+padding: 8px 14px;
+font-weight: bold;
+}
+
+QPushButton#btnAddNewTransaction:hover {
+background-color: #1D4ED8;
+}
+
+QPushButton#btnEditTransaction {
+background-color: #E2E8F0;
+color: #263B59;
+border: none;
+border-radius: 6px;
+padding: 8px 14px;
+}
+
+QPushButton#btnEditTransaction:hover {
+background-color: #CBD5E1;
+}
+
+QPushButton#btnDeleteTransaction {
+background-color: #FEE2E2;
+color: #DC2626;
+border: none;
+border-radius: 6px;
+padding: 8px 14px;
+}
+
+QPushButton#btnDeleteTransaction:hover {
+background-color: #FECACA;
+}
+
+QPushButton#btnAddCategory,
+QPushButton#btnAddBudget {
+background-color: #2563E8;
+color: white;
+border: none;
+border-radius: 6px;
+padding: 8px 14px;
+font-weight: bold;
+}
+
+QPushButton#btnAddCategory:hover,
+QPushButton#btnAddBudget:hover {
+background-color: #1D4ED8;
+}
+
+QPushButton#btnEditCategory,
+QPushButton#btnEditBudget {
+background-color: #E2E8F0;
+color: #263B59;
+border: none;
+border-radius: 6px;
+padding: 8px 14px;
+}
+
+QPushButton#btnEditCategory:hover,
+QPushButton#btnEditBudget:hover {
+background-color: #CBD5E1;
+}
+
+QPushButton#btnDeleteCategory,
+QPushButton#btnDeleteBudget {
+background-color: #FEE2E2;
+color: #DC2626;
+border: none;
+border-radius: 6px;
+padding: 8px 14px;
+}
+
+QPushButton#btnDeleteCategory:hover,
+QPushButton#btnDeleteBudget:hover {
+background-color: #FECACA;
+}
+
+QFrame#cardBudgetLimit {
+background-color: white;
+border: 1px solid #E2E8F0;
+border-radius: 10px;
+}
+
+QFrame#cardBudgetSpent {
+background-color: white;
+border: 1px solid #E2E8F0;
+border-radius: 10px;
+}
+
+QFrame#cardBudgetRemaining {
+background-color: white;
+border: 1px solid #E2E8F0;
+border-radius: 10px;
+}
+
+QLabel#lblBudgetLimitTitle,
+QLabel#lblBudgetSpentTitle,
+QLabel#lblBudgetRemainingTitle {
+color: #64748B;
+font-size: 12px;
+}
+
+QLabel#lblBudgetLimitValue {
+color: #263B59;
+font-size: 24px;
+font-weight: bold;
+}
+
+QLabel#lblBudgetSpentValue {
+color: #DC2626;
+font-size: 24px;
+font-weight: bold;
+}
+
+QLabel#lblBudgetRemainingValue {
+color: #16A34A;
+font-size: 24px;
+font-weight: bold;
+}</string>
+  </property>
+  <property name="animated">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_6">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QWidget" name="sidebar" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>220</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>220</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <widget class="QWidget" name="verticalLayoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>169</width>
+           <height>402</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <property name="leftMargin">
+           <number>12</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>12</number>
+          </property>
+          <property name="bottomMargin">
+           <number>12</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="lblLogo">
+            <property name="font">
+             <font>
+              <family>Gill Sans MT</family>
+              <pointsize>22</pointsize>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+padding: 15px;</string>
+            </property>
+            <property name="text">
+             <string>FinTrack</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnDashboard">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Главная</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnTransactions">
+            <property name="text">
+             <string>Операции</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnCategories">
+            <property name="text">
+             <string>Категории</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnBudget">
+            <property name="text">
+             <string>Бюджет</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnAnalystics">
+            <property name="text">
+             <string>Аналитика</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnReports">
+            <property name="text">
+             <string>Отчёты</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="contentArea" native="true">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <widget class="QStackedWidget" name="stackedPages">
+           <property name="currentIndex">
+            <number>4</number>
+           </property>
+           <widget class="QWidget" name="page">
+            <widget class="QWidget" name="">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>33</y>
+               <width>881</width>
+               <height>601</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <item>
+               <widget class="QLabel" name="lblPageTitle">
+                <property name="font">
+                 <font>
+                  <family>Gill Sans MT</family>
+                  <pointsize>22</pointsize>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #263B59;
+padding: 10px;</string>
+                </property>
+                <property name="text">
+                 <string>Обзор финансов</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnAddTransaction">
+                <property name="minimumSize">
+                 <size>
+                  <width>220</width>
+                  <height>42</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>-1</pointsize>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>+ Добавить операцию</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="statsContainer" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>140</width>
+                  <height>180</height>
+                 </size>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>21</y>
+                   <width>851</width>
+                   <height>161</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_3">
+                  <item>
+                   <widget class="QFrame" name="cardBalance">
+                    <property name="minimumSize">
+                     <size>
+                      <width>140</width>
+                      <height>150</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <widget class="QWidget" name="verticalLayoutWidget_3">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>10</y>
+                       <width>211</width>
+                       <height>141</height>
+                      </rect>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_3">
+                      <item>
+                       <widget class="QLabel" name="lblBalanceTitle">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: #64748B</string>
+                        </property>
+                        <property name="text">
+                         <string>Текущий баланс</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lblBalanceValue">
+                        <property name="font">
+                         <font>
+                          <pointsize>24</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: #263B59;</string>
+                        </property>
+                        <property name="text">
+                         <string>0,00 руб.</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="cardIncome">
+                    <property name="minimumSize">
+                     <size>
+                      <width>140</width>
+                      <height>150</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <widget class="QWidget" name="verticalLayoutWidget_4">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>10</y>
+                       <width>211</width>
+                       <height>141</height>
+                      </rect>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_4">
+                      <item>
+                       <widget class="QLabel" name="lblIncomeTitle">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: #64748B;</string>
+                        </property>
+                        <property name="text">
+                         <string>Доходы за месяц</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lblIncomeValue">
+                        <property name="font">
+                         <font>
+                          <pointsize>24</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: #16A34A;</string>
+                        </property>
+                        <property name="text">
+                         <string>+0,00 руб</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="cardExpense">
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <widget class="QWidget" name="verticalLayoutWidget_5">
+                     <property name="geometry">
+                      <rect>
+                       <x>9</x>
+                       <y>9</y>
+                       <width>211</width>
+                       <height>141</height>
+                      </rect>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_5">
+                      <item>
+                       <widget class="QLabel" name="lblExpenseTitle">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: #64748B;</string>
+                        </property>
+                        <property name="text">
+                         <string>Расходы за месяц</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lblExpenseValue">
+                        <property name="font">
+                         <font>
+                          <pointsize>24</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: #DC2626;</string>
+                        </property>
+                        <property name="text">
+                         <string>-0,00 руб.</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="font">
+                 <font>
+                  <family>Gill Sans MT</family>
+                  <pointsize>16</pointsize>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #263B59;
+padding-top: 10px;</string>
+                </property>
+                <property name="text">
+                 <string>Последние операции</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableView" name="tableRecentTransactions">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>250</height>
+                 </size>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                </property>
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="pageTransactions">
+            <widget class="QWidget" name="verticalLayoutWidget_2">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>30</y>
+               <width>881</width>
+               <height>611</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QLabel" name="lblTransactionTitle">
+                <property name="font">
+                 <font>
+                  <family>Gill Sans MT</family>
+                  <pointsize>22</pointsize>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #263B59; padding: 10px;</string>
+                </property>
+                <property name="text">
+                 <string>Финансовые операции</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="filtersContainer">
+                <property name="minimumSize">
+                 <size>
+                  <width>65</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_3">
+                 <property name="geometry">
+                  <rect>
+                   <x>9</x>
+                   <y>49</y>
+                   <width>861</width>
+                   <height>51</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_2">
+                  <item>
+                   <widget class="QComboBox" name="cmbTransactionType">
+                    <property name="minimumSize">
+                     <size>
+                      <width>150</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Все операции</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Доходы</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Расходы</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="cmbTransactionCategory">
+                    <property name="minimumSize">
+                     <size>
+                      <width>170</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Все категории</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QDateEdit" name="dateFrom">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QDateEdit" name="dateTo">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnResetFilters">
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Cбросить</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableView" name="tableTransactions">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>350</height>
+                 </size>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                </property>
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="transactionActions">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>55</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>75</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_4">
+                 <property name="geometry">
+                  <rect>
+                   <x>9</x>
+                   <y>9</y>
+                   <width>861</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_4">
+                  <item>
+                   <widget class="QPushButton" name="btnAddNewTransaction">
+                    <property name="minimumSize">
+                     <size>
+                      <width>130</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>+ Добавить</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnEditTransaction">
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Изменить</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnDeleteTransaction">
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Удалить</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="pageCategories">
+            <widget class="QWidget" name="verticalLayoutWidget_6">
+             <property name="geometry">
+              <rect>
+               <x>19</x>
+               <y>39</y>
+               <width>901</width>
+               <height>601</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <widget class="QLabel" name="lblCategoriesTitle">
+                <property name="font">
+                 <font>
+                  <family>Gill Sans MT</family>
+                  <pointsize>22</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #263B59; padding: 10px;</string>
+                </property>
+                <property name="text">
+                 <string>Управление категориями</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="categoriesActions">
+                <property name="minimumSize">
+                 <size>
+                  <width>55</width>
+                  <height>75</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_5">
+                 <property name="geometry">
+                  <rect>
+                   <x>19</x>
+                   <y>19</y>
+                   <width>871</width>
+                   <height>51</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <item>
+                   <widget class="QPushButton" name="btnAddCategory">
+                    <property name="minimumSize">
+                     <size>
+                      <width>180</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>+ Добавить категорию</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnEditCategory">
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Изменить</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnDeleteCategory">
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Удалить</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableView" name="tableCategories">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>350</height>
+                 </size>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                </property>
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="page_2"/>
+           <widget class="QWidget" name="pageBudget">
+            <widget class="QWidget" name="">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>20</y>
+               <width>891</width>
+               <height>631</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item>
+               <widget class="QLabel" name="lblBudgetTitle">
+                <property name="font">
+                 <font>
+                  <family>Gill Sans MT</family>
+                  <pointsize>22</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #263B59; padding: 10px;</string>
+                </property>
+                <property name="text">
+                 <string>Планирование бюджета</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblBudgetDescription">
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #64748B; padding-left: 10px;</string>
+                </property>
+                <property name="text">
+                 <string>Контролируйте расходы и следите за соблюдением месячных лимитов.</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="budgetPeriodContainer">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>90</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_6">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>0</y>
+                   <width>881</width>
+                   <height>51</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                  <item>
+                   <widget class="QLabel" name="lblBudgetMonth">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Месяц:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="cmbBudgetMonth">
+                    <property name="minimumSize">
+                     <size>
+                      <width>140</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI</family>
+                     </font>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Январь</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Февраль</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Март</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Апрель</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Май</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Июнь</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Июль</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Август</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Сентябрь</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Октябрь</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Ноябрь</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Декабрь</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblBudgetYear">
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Год:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="cmbBudgetYear">
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>2026</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="budgetStatsContainer" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_7">
+                 <property name="geometry">
+                  <rect>
+                   <x>9</x>
+                   <y>-1</y>
+                   <width>881</width>
+                   <height>81</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_7">
+                  <item>
+                   <widget class="QFrame" name="cardBudgetLimit">
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <widget class="QWidget" name="verticalLayoutWidget_8">
+                     <property name="geometry">
+                      <rect>
+                       <x>19</x>
+                       <y>19</y>
+                       <width>261</width>
+                       <height>56</height>
+                      </rect>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_11">
+                      <item>
+                       <widget class="QLabel" name="lblBudgetLimitTitle">
+                        <property name="font">
+                         <font>
+                          <pointsize>-1</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Общий лимит</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lblBudgetLimitValue">
+                        <property name="font">
+                         <font>
+                          <pointsize>-1</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>0,00 руб.</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="cardBudgetSpent">
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <widget class="QWidget" name="verticalLayoutWidget_9">
+                     <property name="geometry">
+                      <rect>
+                       <x>19</x>
+                       <y>19</y>
+                       <width>261</width>
+                       <height>56</height>
+                      </rect>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_12">
+                      <item>
+                       <widget class="QLabel" name="lblBudgetSpentTitle">
+                        <property name="font">
+                         <font>
+                          <pointsize>-1</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Потрачено</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lblBudgetSpentValue">
+                        <property name="font">
+                         <font>
+                          <pointsize>-1</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>0,00 руб.</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="cardBudgetRemaining">
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <widget class="QWidget" name="verticalLayoutWidget_10">
+                     <property name="geometry">
+                      <rect>
+                       <x>19</x>
+                       <y>19</y>
+                       <width>261</width>
+                       <height>56</height>
+                      </rect>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_13">
+                      <item>
+                       <widget class="QLabel" name="lblBudgetRemainingTitle">
+                        <property name="font">
+                         <font>
+                          <pointsize>-1</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Остаток бюджета</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="lblBudgetRemainingValue">
+                        <property name="font">
+                         <font>
+                          <pointsize>-1</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>0,00 руб.</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblBudgetTableTitle">
+                <property name="font">
+                 <font>
+                  <pointsize>16</pointsize>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #263B59; </string>
+                </property>
+                <property name="text">
+                 <string>Бюджет по категориям</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTableView" name="tableBudgets">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>175</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>175</height>
+                 </size>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                </property>
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="budgetActions">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>75</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_8">
+                 <property name="geometry">
+                  <rect>
+                   <x>9</x>
+                   <y>0</y>
+                   <width>881</width>
+                   <height>51</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <item>
+                   <widget class="QPushButton" name="btnAddBudget">
+                    <property name="minimumSize">
+                     <size>
+                      <width>160</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>+ Добавить бюджет</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnEditBudget">
+                    <property name="minimumSize">
+                     <size>
+                      <width>160</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Изменить</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btnDeleteBudget">
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>38</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Удалить</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblBudgetProgressTitle">
+                <property name="font">
+                 <font>
+                  <pointsize>16</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #263B59;</string>
+                </property>
+                <property name="text">
+                 <string>Использование бюджета</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="budgetProgressContainer" native="true"/>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
